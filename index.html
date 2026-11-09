@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pustaka Navy – Toko Buku Online</title>
+<style>
+:root{--bg:#f5f7fb;--surface:#fff;--ink:#0f1b33;--muted:#5b6780;--navy:#0b2447;--navy2:#19376d;--accent:#2f6fed;--line:#dde3ee;--ok:#1a7f4b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1222;--surface:#111d36;--ink:#e8edf7;--muted:#9aa8c4;--navy:#0b2447;--navy2:#2a4a8a;--accent:#6f9bff;--line:#223357;--ok:#4cc38a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1222;--surface:#111d36;--ink:#e8edf7;--muted:#9aa8c4;--navy:#0b2447;--navy2:#2a4a8a;--accent:#6f9bff;--line:#223357;--ok:#4cc38a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hidden{display:none!important}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:10px;padding:.65rem 1.1rem;font-weight:600;transition:background .15s}
+.btn:hover{background:var(--navy2)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--bg)}
+.btn.full{width:100%}
+/* login */
+#login{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.hero{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:3rem;display:flex;flex-direction:column;justify-content:center;gap:1rem}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin:0}
+.hero p{color:#c9d6f2;max-width:38ch;margin:0}
+.shelf{display:flex;gap:8px;margin-top:1.5rem;align-items:flex-end}
+.shelf span{display:block;width:26px;border-radius:3px 3px 0 0;background:#ffffff33}
+.formwrap{display:grid;place-items:center;padding:2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:2rem;width:100%;max-width:400px}
+.card h2{margin:0 0 .25rem;font-family:Georgia,serif}
+label{display:block;font-size:.875rem;font-weight:600;margin:1rem 0 .3rem}
+input[type=text],input[type=password],input[type=search]{width:100%;padding:.7rem .85rem;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.hint{font-size:.85rem;color:var(--muted);margin-top:1rem}
+.err{color:#d33;font-size:.875rem;min-height:1.3em;margin:.6rem 0 0}
+/* app */
+header{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:11}
+.bar{max-width:1100px;margin:0 auto;padding:.75rem 1rem;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.brand{font-family:Georgia,serif;font-size:1.25rem;font-weight:700;margin-right:auto}
+.search{flex:1 1 260px;order:3;max-width:none}
+.search input{background:#ffffff1f;border-color:#ffffff33;color:#fff}
+.search input::placeholder{color:#c9d6f2}
+@media(min-width:760px){.search{order:0;max-width:380px}}
+.who{font-size:.875rem;color:#c9d6f2}
+.hbtn{background:#ffffff1f;color:#fff;border:1px solid #ffffff33;border-radius:10px;padding:.5rem .8rem;position:relative}
+.hbtn:hover{background:#ffffff33}
+.badge{position:absolute;top:-8px;right:-8px;background:#ff6b57;color:#fff;border-radius:99px;font-size:.72rem;min-width:20px;height:20px;display:grid;place-items:center;padding:0 5px}
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
+main h2{font-family:Georgia,serif;margin:.2rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.book{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cover{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:1rem;color:#fff;border:0;text-align:left;width:100%;position:relative}
+.cover::after{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#ffffff33}
+.cover b{font-family:Georgia,serif;font-size:1.15rem;line-height:1.2}
+.cover small{opacity:.85}
+.info{padding:.8rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+.info h3{font-size:.95rem;margin:0;line-height:1.3}
+.info .by{color:var(--muted);font-size:.82rem}
+.price{font-weight:700;color:var(--accent);margin-top:auto;padding-top:.4rem}
+.info .btn{margin-top:.5rem;padding:.5rem}
+.empty{text-align:center;color:var(--muted);padding:3rem 1rem;grid-column:1/-1}
+/* overlay */
+.ov{position:fixed;inset:0;background:#050b1888;z-index:30;display:flex;justify-content:flex-end;align-items:center}
+.ov.center{justify-content:center;padding:1rem}
+.panel{background:var(--surface);color:var(--ink);overflow:auto;max-height:100%}
+.modal{border-radius:16px;max-width:620px;width:100%;display:grid;grid-template-columns:200px 1fr;gap:1.25rem;padding:1.25rem}
+@media(max-width:560px){.modal{grid-template-columns:1fr}.modal .cover{max-width:180px}}
+.drawer{width:min(420px,100%);height:100%;display:flex;flex-direction:column;padding:1.25rem;padding-top:calc(1.25rem + env(safe-area-inset-top,0px));padding-bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}
+.drawer h2{margin:0 0 1rem}
+.items{flex:1;overflow:auto}
+.row{display:grid;grid-template-columns:44px 1fr auto;gap:.75rem;padding:.7rem 0;border-bottom:1px solid var(--line);align-items:center}
+.mini{width:44px;height:58px;border-radius:5px}
+.qty{display:flex;align-items:center;gap:.4rem;margin-top:.25rem}
+.qty button{width:26px;height:26px;border-radius:7px;border:1px solid var(--line);background:var(--bg)}
+.sum{padding-top:1rem;display:grid;gap:.3rem}
+.sum div{display:flex;justify-content:space-between}
+.sum .tot{font-size:1.2rem;font-weight:700;border-top:1px solid var(--line);padding-top:.5rem;margin:.3rem 0 .8rem}
+.ok{color:var(--ok);font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:.65rem 1.1rem;border-radius:10px;z-index:50;box-shadow:0 6px 20px #0004}
+@media(max-width:760px){#login{grid-template-columns:1fr}.hero{padding:2rem 1.5rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<section id="login">
+  <div class="hero">
+    <h1>Pustaka Navy</h1>
+    <p>Toko buku online untuk pembaca Indonesia. Masuk, pilih buku, dan pesan dalam beberapa langkah.</p>
+    <div class="shelf" aria-hidden="true"><span style="height:70px"></span><span style="height:96px"></span><span style="height:58px"></span><span style="height:110px"></span><span style="height:80px"></span><span style="height:90px"></span></div>
+  </div>
+  <div class="formwrap">
+    <div class="card">
+      <h2>Masuk ke akun</h2>
+      <div style="color:var(--muted)">Gunakan username atau email Anda.</div>
+      <label for="u">Username atau email</label>
+      <input id="u" type="text" autocomplete="username">
+      <label for="p">Kata sandi</label>
+      <input id="p" type="password" autocomplete="current-password">
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn full" id="loginBtn">Masuk</button>
+      <p class="hint">Akun demo: <b>pembaca</b> atau <b>pembaca@pustakanavy.id</b>, kata sandi <b>buku123</b></p>
+    </div>
+  </div>
+</section>
+
+<div id="app" class="hidden">
+  <header>
+    <div class="bar">
+      <div class="brand">Pustaka Navy</div>
+      <div class="search"><input id="q" type="search" placeholder="Cari judul buku…" aria-label="Cari judul buku"></div>
+      <span class="who" id="who"></span>
+      <button class="hbtn" id="cartBtn" aria-label="Buka keranjang">Keranjang <span class="badge" id="badge">0</span></button>
+      <button class="hbtn" id="logout">Keluar</button>
+    </div>
+  </header>
+  <main>
+    <h2 id="title">Katalog buku</h2>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<div id="layer"></div>
+
+<script>
+const BOOKS=[
+{id:1,t:"Laskar Pelangi",a:"Andrea Hirata",p:89000,c:["#0b2447","#2f6fed"],g:"Novel",d:"Kisah sepuluh anak Belitung yang bersekolah di sekolah sederhana dengan semangat belajar yang luar biasa."},
+{id:2,t:"Bumi Manusia",a:"Pramoedya Ananta Toer",p:115000,c:["#3b1d2e","#a23b5e"],g:"Sastra",d:"Awal Tetralogi Buru: kisah Minke di masa kolonial, tentang cinta, keadilan, dan kebangkitan bangsa."},
+{id:3,t:"Filosofi Teras",a:"Henry Manampiring",p:98000,c:["#0d3b3a","#2a9d8f"],g:"Pengembangan diri",d:"Pengantar Stoisisme yang praktis untuk menghadapi emosi negatif dan hidup lebih tenang."},
+{id:4,t:"Laut Bercerita",a:"Leila S. Chudori",p:105000,c:["#102a5c","#4f86f7"],g:"Novel",d:"Novel tentang persahabatan, kehilangan, dan keluarga yang menunggu kabar para aktivis yang hilang."},
+{id:5,t:"Negeri 5 Menara",a:"Ahmad Fuadi",p:92000,c:["#4a2c0a","#d98b2b"],g:"Novel",d:"Enam santri dari berbagai daerah belajar di pondok dan memegang teguh mantra “man jadda wajada”."},
+{id:6,t:"Cantik Itu Luka",a:"Eka Kurniawan",p:125000,c:["#2b1245","#7a4fd1"],g:"Sastra",d:"Saga keluarga lintas generasi yang memadukan sejarah, mitos, dan humor gelap."},
+{id:7,t:"Dunia Sophie",a:"Jostein Gaarder",p:139000,c:["#14304f","#3f8fbf"],g:"Filsafat",d:"Novel yang memperkenalkan sejarah filsafat Barat lewat surat-surat misterius untuk seorang remaja."},
+{id:8,t:"Sapiens",a:"Yuval Noah Harari",p:149000,c:["#1e1e2f","#5b6b8c"],g:"Sejarah",d:"Ringkasan sejarah umat manusia, dari revolusi kognitif hingga masa kini."}
+];
+const rp=n=>"Rp "+new Intl.NumberFormat("id-ID").format(n);
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+let user=store.get("pn_user",null),cart=store.get("pn_cart",{});
+const cover=(b,cls="cover")=>`<div class="${cls}" style="background:linear-gradient(155deg,${b.c[0]},${b.c[1]})"><small>${b.g}</small><b>${b.t}</b><small>${b.a}</small></div>`;
+
+function show(){
+  $("#login").classList.toggle("hidden",!!user);
+  $("#app").classList.toggle("hidden",!user);
+  if(user){$("#who").textContent="Halo, "+user;renderGrid();renderBadge()}
+}
+function login(){
+  const u=$("#u").value.trim().toLowerCase(),p=$("#p").value;
+  if(!u||!p){$("#err").textContent="Isi username/email dan kata sandi.";return}
+  if((u==="pembaca"||u==="pembaca@pustakanavy.id")&&p==="buku123"){user="pembaca";store.set("pn_user",user);$("#err").textContent="";$("#p").value="";show()}
+  else $("#err").textContent="Username/email atau kata sandi salah. Periksa lagi dan coba masuk kembali."
+}
+function logout(){user=null;store.del("pn_user");closeLayer();show()}
+
+function renderGrid(){
+  const q=$("#q").value.trim().toLowerCase();
+  const list=BOOKS.filter(b=>b.t.toLowerCase().includes(q));
+  $("#title").textContent=q?`Hasil untuk “${$("#q").value.trim()}” (${list.length})`:"Katalog buku";
+  $("#grid").innerHTML=list.length?list.map(b=>`<article class="book">
+    <button class="cover" style="background:linear-gradient(155deg,${b.c[0]},${b.c[1]})" data-d="${b.id}" aria-label="Lihat detail ${b.t}"><small>${b.g}</small><b>${b.t}</b><small>${b.a}</small></button>
+    <div class="info"><h3>${b.t}</h3><span class="by">${b.a}</span><span class="price">${rp(b.p)}</span>
+    <button class="btn" data-add="${b.id}">Beli</button></div></article>`).join(""):`<div class="empty">Tidak ada buku dengan judul tersebut. Coba kata kunci lain.</div>`;
+}
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+function renderBadge(){$("#badge").textContent=count()}
+function save(){store.set("pn_cart",cart);renderBadge()}
+function add(id){cart[id]=(cart[id]||0)+1;save();toast("Ditambahkan ke keranjang")}
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1600)}
+function closeLayer(){$("#layer").innerHTML=""}
+function overlay(html,center){
+  $("#layer").innerHTML=`<div class="ov ${center?"center":""}" id="ov">${html}</div>`;
+  $("#ov").addEventListener("click",e=>{if(e.target.id==="ov"||e.target.closest("[data-close]"))closeLayer()});
+}
+function detail(id){
+  const b=BOOKS.find(x=>x.id==id);
+  overlay(`<div class="panel modal" role="dialog" aria-label="Detail buku">${cover(b)}
+    <div><h2 style="font-family:Georgia,serif;margin:0">${b.t}</h2><div class="by" style="color:var(--muted)">${b.a} · ${b.g}</div>
+    <p>${b.d}</p><div class="price" style="font-size:1.4rem">${rp(b.p)}</div>
+    <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap"><button class="btn" data-add="${b.id}">Tambah ke keranjang</button><button class="btn ghost" data-close>Tutup</button></div></div></div>`,true);
+}
+function totals(){
+  const sub=Object.entries(cart).reduce((s,[id,n])=>s+BOOKS.find(b=>b.id==id).p*n,0);
+  const ship=sub===0||sub>=200000?0:15000;
+  return{sub,ship,total:sub+ship};
+}
+function openCart(){
+  const ids=Object.keys(cart),t=totals();
+  overlay(`<aside class="panel drawer" role="dialog" aria-label="Keranjang belanja"><h2>Keranjang (${count()})</h2>
+  <div class="items">${ids.length?ids.map(id=>{const b=BOOKS.find(x=>x.id==id);return `<div class="row">${cover(b,"mini").replace(/<small>.*?<\/small>|<b>.*?<\/b>/g,"")}
+    <div><b>${b.t}</b><div style="color:var(--muted);font-size:.85rem">${rp(b.p)}</div>
+    <div class="qty"><button data-dec="${id}" aria-label="Kurangi">−</button><span>${cart[id]}</span><button data-inc="${id}" aria-label="Tambah">+</button></div></div>
+    <b>${rp(b.p*cart[id])}</b></div>`}).join(""):`<div class="empty">Keranjang masih kosong. Pilih buku dari katalog.</div>`}</div>
+  <div class="sum"><div><span>Subtotal</span><span>${rp(t.sub)}</span></div>
+  <div><span>Ongkos kirim</span><span class="${t.ship?"":"ok"}">${t.sub?(t.ship?rp(t.ship):"Gratis"):"–"}</span></div>
+  <div class="tot"><span>Total</span><span>${rp(t.total)}</span></div>
+  <div style="color:var(--muted);font-size:.82rem;margin:-.4rem 0 .6rem">${t.sub&&t.sub<200000?"Belanja "+rp(200000-t.sub)+" lagi untuk gratis ongkir.":""}</div>
+  <button class="btn full" data-order ${ids.length?"":"disabled"}>Pesan sekarang</button>
+  <button class="btn ghost full" data-close style="margin-top:.5rem">Lanjut belanja</button></div></aside>`);
+}
+function order(){
+  const t=totals(),no="PN-"+Date.now().toString().slice(-7);
+  const orders=store.get("pn_orders",[]);orders.push({no,total:t.total,items:{...cart}});store.set("pn_orders",orders);
+  cart={};save();
+  overlay(`<div class="panel card" style="text-align:center" role="dialog"><h2>Pesanan diterima</h2>
+  <p>Nomor pesanan <b>${no}</b></p><p class="price" style="font-size:1.5rem">${rp(t.total)}</p>
+  <p style="color:var(--muted)">Terima kasih, ${user}. Pesanan Anda sedang diproses.</p>
+  <button class="btn full" data-close>Kembali ke katalog</button></div>`,true);
+}
+
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-add],[data-d],[data-inc],[data-dec],[data-order]");
+  if(!el)return;
+  const d=el.dataset;
+  if(d.add)add(d.add);
+  else if(d.d)detail(d.d);
+  else if(d.inc||d.dec){const id=d.inc||d.dec;cart[id]=(cart[id]||0)+(d.inc?1:-1);if(cart[id]<=0)delete cart[id];save();openCart()}
+  else if("order" in d)order();
+});
+$("#loginBtn").onclick=login;
+$("#p").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+$("#u").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+$("#q").addEventListener("input",renderGrid);
+$("#cartBtn").onclick=openCart;
+$("#logout").onclick=logout;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLayer()});
+show();
+</script>
+</body>
+</html>
