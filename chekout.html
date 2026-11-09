@@ -1,1 +1,25 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pemesanan - BukuKita</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="checkout">
+<header class="nav"><strong>📚 BukuKita</strong><nav><a href="dashboard.html">Dashboard</a><a href="stok.html">Katalog</a><a href="checkout.html">Pemesanan</a><a href="tracking.html">Tracking</a><a href="#" id="logout">Logout</a></nav></header><main><section class="card"><h1>Pemesanan Buku</h1>
+<label for="pilihBuku">Pilih buku</label><div class="row"><select id="pilihBuku"></select><button type="button" id="tambahItem" style="flex:0 0 auto">Tambah ke pesanan</button></div><br>
+<div class="wrap"><table><thead><tr><th>Judul</th><th>Harga</th><th>Jumlah</th><th>Subtotal</th><th>Aksi</th></tr></thead><tbody id="isiKeranjang"></tbody></table></div>
+<h3>Total: <span id="totalBayar">Rp0</span></h3></section>
+<section class="card"><h2>Data pemesan &amp; pembayaran</h2><form id="formCheckout"><div class="row">
+<div><label for="nama">Nama pemesan</label><input id="nama"></div><div><label for="cEmail">Email</label><input id="cEmail" type="email"></div>
+<div><label for="telp">No. telepon</label><input id="telp" inputmode="numeric"></div></div>
+<label for="alamat">Alamat pengiriman</label><input id="alamat"><div class="row">
+<div><label for="ekspedisi">Ekspedisi</label><select id="ekspedisi"><option>JNE</option><option>J&amp;T Express</option><option>SiCepat</option></select></div>
+<div><label for="jenis">Jenis paket</label><select id="jenis"><option>Reguler</option><option>Express</option></select></div>
+<div><label for="metode">Pembayaran</label><select id="metode"><option>Transfer Bank</option><option>E-Wallet</option><option>COD</option></select></div></div>
+<p class="err" id="errCheckout"></p><button type="submit">Buat pesanan</button></form></section></main>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
