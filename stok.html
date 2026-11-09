@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog - BukuKita</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="stok">
+<header class="nav"><strong>📚 BukuKita</strong><nav><a href="dashboard.html">Dashboard</a><a href="stok.html">Katalog</a><a href="checkout.html">Pemesanan</a><a href="tracking.html">Tracking</a><a href="#" id="logout">Logout</a></nav></header><main><section class="card"><h1>Informasi Stok / Katalog Buku</h1><div class="wrap"><table>
+<thead><tr><th>Cover</th><th>Kode</th><th>Judul</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th><th>Aksi</th></tr></thead>
+<tbody id="isiStok"></tbody></table></div></section>
+<section class="card"><h2>Tambah stok baru</h2><form id="formStok"><div class="row">
+<div><label for="kode">Kode</label><input id="kode"></div><div><label for="judul">Judul</label><input id="judul"></div>
+<div><label for="kategori">Kategori</label><input id="kategori"></div><div><label for="harga">Harga</label><input id="harga" type="number"></div>
+<div><label for="stok">Stok</label><input id="stok" type="number"></div></div><p class="err" id="errStok"></p>
+<button type="submit">Tambah baris</button></form></section></main>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
