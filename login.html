@@ -1,1 +1,26 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login - BukuKita</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+<main class="login-box"><section class="card"><h1>Masuk ke BukuKita</h1>
+<form id="formLogin"><label for="email">Email</label><input type="email" id="email" required placeholder="admin@bukukita.com">
+<label for="password">Password</label><input type="password" id="password" required placeholder="admin123"><br><br>
+<button type="submit">Login</button></form><p>
+<button class="alt" type="button" data-open="modalLupa">Lupa Password</button>
+<button class="alt" type="button" data-open="modalDaftar">Daftar</button></p></section></main>
+<div class="modal" id="modalLupa"><section class="card"><h2>Lupa Password</h2><form id="formLupa">
+<label for="lEmail">Email terdaftar</label><input id="lEmail" type="email" required><p class="err" id="errLupa"></p>
+<button type="submit">Kirim tautan reset</button> <button class="alt" type="button" data-close="1">Tutup</button></form></section></div>
+<div class="modal" id="modalDaftar"><section class="card"><h2>Daftar Akun</h2><form id="formDaftar">
+<label for="dNama">Nama lengkap</label><input id="dNama" required><label for="dEmail">Email</label><input id="dEmail" type="email" required>
+<label for="dPass">Password (min. 6 karakter)</label><input id="dPass" type="password" required><p class="err" id="errDaftar"></p>
+<button type="submit">Daftar</button> <button class="alt" type="button" data-close="1">Tutup</button></form></section></div>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
