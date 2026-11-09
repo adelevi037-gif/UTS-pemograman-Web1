@@ -1,1 +1,20 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard - BukuKita</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+<header class="nav"><strong>📚 BukuKita</strong><nav><a href="dashboard.html">Dashboard</a><a href="stok.html">Katalog</a><a href="checkout.html">Pemesanan</a><a href="tracking.html">Tracking</a><a href="#" id="logout">Logout</a></nav></header><main><section class="card"><h1 id="greeting"></h1><p id="jam"></p></section>
+<section class="menu" aria-label="Menu utama"><a class="btn" href="stok.html">Informasi Stok / Katalog</a>
+<a class="btn" href="tracking.html">Tracking Pengiriman</a><a class="btn" href="checkout.html">Laporan Pemesanan</a>
+<button type="button" data-open="modalHistory">History Transaksi</button></section></main>
+<div class="modal" id="modalHistory"><section class="card"><h2>History Transaksi</h2><div class="wrap"><table>
+<thead><tr><th>No. DO</th><th>Pemesan</th><th>Tanggal</th><th>Total</th></tr></thead><tbody id="isiHistory"></tbody></table></div><br>
+<button type="button" data-close="1">Tutup</button></section></div>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
